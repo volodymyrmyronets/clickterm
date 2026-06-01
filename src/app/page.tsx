@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Calendar, ChevronDown, Info, Menu, Plus, Search, User } from "lucide-react";
 import { Sidebar } from "@/components/Sidebar";
 import { TemplatesTable } from "@/components/TemplatesTable";
@@ -76,11 +77,14 @@ export default function Home() {
             <Plus className="size-4" />
           </button>
 
-          <button className="ml-auto flex h-10 shrink-0 items-center gap-2 rounded-xl bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover">
+          <Link
+            href="/templates/new"
+            className="ml-auto flex h-10 shrink-0 items-center gap-2 rounded-xl bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+          >
             <Plus className="size-4" />
             <span className="hidden sm:inline">New template</span>
             <span className="sm:hidden">New</span>
-          </button>
+          </Link>
         </div>
 
         {/* Table (scrolls horizontally on small screens) */}
