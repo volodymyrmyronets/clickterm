@@ -27,6 +27,7 @@
   --color-line-soft: #f1f1f4; /* row dividers, chips */
   --color-surface: #fafafb; /* header / hover surfaces */
   --color-surface-soft: #f7f7f9; /* hover chips / cards */
+  --color-sidebar: #f4f4f6; /* left navigation background */
 }
 
 html,

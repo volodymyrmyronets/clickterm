@@ -44,7 +44,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
     <motion.aside
       animate={{ width: showCollapsed ? 76 : 264 }}
       transition={{ type: "spring", stiffness: 400, damping: 38 }}
-      className="flex h-full shrink-0 flex-col border-r border-line bg-white"
+      className="flex h-full shrink-0 flex-col border-r border-line bg-sidebar"
     >
       {/* Brand */}
       <div className="flex h-16 items-center justify-between px-4">
@@ -112,7 +112,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            className="relative m-3 rounded-xl bg-surface-soft p-4"
+            className="relative m-3 rounded-xl border border-line bg-white p-4"
           >
             <button
               className="absolute right-3 top-3 text-faint hover:text-muted"
@@ -152,20 +152,23 @@ function NavItem({
   return (
     <button
       title={collapsed ? label : undefined}
-      className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+      className={`relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
         collapsed ? "justify-center" : ""
       } ${
         active
-          ? "bg-accent-soft font-medium text-ink"
-          : "text-ink-soft hover:bg-surface-soft"
+          ? "bg-white font-medium text-ink shadow-sm"
+          : "text-ink-soft hover:bg-white"
       }`}
     >
+      {active && (
+        <span className="absolute -left-3 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-accent" />
+      )}
       <Icon
         className={`size-[18px] shrink-0 ${active ? "text-accent" : "text-muted"}`}
       />
       {!collapsed && <span className="truncate">{label}</span>}
       {!collapsed && badge && (
-        <span className="ml-auto grid h-5 min-w-5 place-items-center rounded-md bg-accent-softer px-1 text-xs font-medium text-accent">
+        <span className="ml-auto grid h-5 min-w-5 place-items-center rounded-md bg-accent px-1 text-xs font-medium text-white">
           {badge}
         </span>
       )}
