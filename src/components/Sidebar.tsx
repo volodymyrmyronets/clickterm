@@ -54,7 +54,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
         )}
         <button
           onClick={onClose ?? (() => setCollapsed((v) => !v))}
-          className={`grid size-8 place-items-center rounded-lg border border-line text-faint transition-colors hover:bg-surface-soft ${
+          className={`grid size-8 place-items-center rounded-lg border border-line bg-white text-faint transition-colors hover:bg-surface-soft ${
             showCollapsed ? "mx-auto" : ""
           }`}
           aria-label={isDrawer ? "Close menu" : "Toggle sidebar"}
@@ -78,10 +78,10 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
               Your teams
             </span>
             <button
-              className="grid size-5 place-items-center rounded text-faint hover:bg-surface-soft"
+              className="grid size-7 place-items-center rounded-lg border border-line bg-white text-faint transition-colors hover:bg-surface-soft"
               aria-label="Add team"
             >
-              <Plus className="size-3.5" />
+              <Plus className="size-4" />
             </button>
           </div>
           <button className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink hover:bg-surface-soft">

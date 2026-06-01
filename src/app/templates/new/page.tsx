@@ -43,14 +43,12 @@ export default function NewTemplate() {
 
   function exec(cmd: string, value?: string) {
     editorRef.current?.focus();
-    // eslint-disable-next-line deprecation/deprecation
     document.execCommand(cmd, false, value);
     syncEmpty();
   }
 
   function insertToken(label: string) {
     editorRef.current?.focus();
-    // eslint-disable-next-line deprecation/deprecation
     document.execCommand("insertText", false, `{{${label}}}`);
     syncEmpty();
   }
