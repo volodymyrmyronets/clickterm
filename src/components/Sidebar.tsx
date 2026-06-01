@@ -44,7 +44,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
     <motion.aside
       animate={{ width: showCollapsed ? 76 : 264 }}
       transition={{ type: "spring", stiffness: 400, damping: 38 }}
-      className="flex h-full shrink-0 flex-col border-r border-[#ECECEF] bg-white"
+      className="flex h-full shrink-0 flex-col border-r border-line bg-white"
     >
       {/* Brand */}
       <div className="flex h-16 items-center justify-between px-4">
@@ -54,7 +54,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
         )}
         <button
           onClick={onClose ?? (() => setCollapsed((v) => !v))}
-          className={`grid size-8 place-items-center rounded-lg border border-[#ECECEF] text-[#9CA3AF] transition-colors hover:bg-[#F7F7F9] ${
+          className={`grid size-8 place-items-center rounded-lg border border-line text-faint transition-colors hover:bg-surface-soft ${
             showCollapsed ? "mx-auto" : ""
           }`}
           aria-label={isDrawer ? "Close menu" : "Toggle sidebar"}
@@ -74,22 +74,22 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
       {!showCollapsed && (
         <div className="mt-4 px-3">
           <div className="flex items-center justify-between px-3 py-1.5">
-            <span className="text-[11px] font-medium uppercase tracking-wide text-[#9CA3AF]">
+            <span className="text-[11px] font-medium uppercase tracking-wide text-faint">
               Your teams
             </span>
             <button
-              className="grid size-5 place-items-center rounded text-[#9CA3AF] hover:bg-[#F7F7F9]"
+              className="grid size-5 place-items-center rounded text-faint hover:bg-surface-soft"
               aria-label="Add team"
             >
               <Plus className="size-3.5" />
             </button>
           </div>
-          <button className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-[#1A1A21] hover:bg-[#F7F7F9]">
-            <Send className="size-4 -rotate-12 text-[#6C47FF]" />
+          <button className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink hover:bg-surface-soft">
+            <Send className="size-4 -rotate-12 text-accent" />
             <span>ClickTerm Team</span>
-            <ChevronDown className="ml-auto size-4 text-[#9CA3AF]" />
+            <ChevronDown className="ml-auto size-4 text-faint" />
           </button>
-          <button className="mt-1 flex w-full items-center gap-2 rounded-lg py-2 pl-9 pr-3 text-sm text-[#6B7280] hover:bg-[#F7F7F9]">
+          <button className="mt-1 flex w-full items-center gap-2 rounded-lg py-2 pl-9 pr-3 text-sm text-muted hover:bg-surface-soft">
             <Briefcase className="size-4" />
             <span>Team Management</span>
           </button>
@@ -112,21 +112,21 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            className="relative m-3 rounded-xl bg-[#F7F6FB] p-4"
+            className="relative m-3 rounded-xl bg-surface-soft p-4"
           >
             <button
-              className="absolute right-3 top-3 text-[#9CA3AF] hover:text-[#6B7280]"
+              className="absolute right-3 top-3 text-faint hover:text-muted"
               aria-label="Dismiss"
             >
               <X className="size-4" />
             </button>
-            <span className="grid size-9 place-items-center rounded-lg bg-[#EDE9FE] text-[#6C47FF]">
+            <span className="grid size-9 place-items-center rounded-lg bg-accent-softer text-accent">
               <MessagesSquare className="size-4" />
             </span>
-            <p className="mt-3 text-sm font-semibold text-[#1A1A21]">
+            <p className="mt-3 text-sm font-semibold text-ink">
               Invite team members
             </p>
-            <p className="mt-1 text-xs leading-relaxed text-[#6B7280]">
+            <p className="mt-1 text-xs leading-relaxed text-muted">
               Bring your team in to share and collaborate!
             </p>
           </motion.div>
@@ -156,16 +156,16 @@ function NavItem({
         collapsed ? "justify-center" : ""
       } ${
         active
-          ? "bg-[#F1EDFF] font-medium text-[#1A1A21]"
-          : "text-[#4B5563] hover:bg-[#F7F7F9]"
+          ? "bg-accent-soft font-medium text-ink"
+          : "text-ink-soft hover:bg-surface-soft"
       }`}
     >
       <Icon
-        className={`size-[18px] shrink-0 ${active ? "text-[#6C47FF]" : "text-[#6B7280]"}`}
+        className={`size-[18px] shrink-0 ${active ? "text-accent" : "text-muted"}`}
       />
       {!collapsed && <span className="truncate">{label}</span>}
       {!collapsed && badge && (
-        <span className="ml-auto grid h-5 min-w-5 place-items-center rounded-md bg-[#EDE9FE] px-1 text-xs font-medium text-[#6C47FF]">
+        <span className="ml-auto grid h-5 min-w-5 place-items-center rounded-md bg-accent-softer px-1 text-xs font-medium text-accent">
           {badge}
         </span>
       )}

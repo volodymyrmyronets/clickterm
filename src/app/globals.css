@@ -1,8 +1,32 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Color palette (extracted from the ClickTerm dashboard).
+   Defined as Tailwind v4 theme tokens → usable as utilities:
+   bg-accent, text-ink, border-line, bg-surface, …
+   Category-tag colors live in src/lib/data.ts (tagColor).
+--------------------------------------------------------------------------- */
 @theme {
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Code", monospace;
+
+  /* Brand / accent */
+  --color-accent: #6c47ff;
+  --color-accent-hover: #5b39e0;
+  --color-accent-soft: #f1edff; /* active nav, soft fills */
+  --color-accent-softer: #ede9fe; /* badges */
+
+  /* Text */
+  --color-ink: #1a1a21; /* headings / primary */
+  --color-ink-soft: #374151; /* secondary text */
+  --color-muted: #6b7280; /* muted text */
+  --color-faint: #9ca3af; /* placeholders / faint */
+
+  /* Lines & surfaces */
+  --color-line: #ececef; /* default borders */
+  --color-line-soft: #f1f1f4; /* row dividers, chips */
+  --color-surface: #fafafb; /* header / hover surfaces */
+  --color-surface-soft: #f7f7f9; /* hover chips / cards */
 }
 
 html,
@@ -12,7 +36,7 @@ body {
 
 body {
   background-color: #ffffff;
-  color: #1a1a21;
+  color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }

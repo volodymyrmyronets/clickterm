@@ -9,7 +9,7 @@ export default function Home() {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="flex h-dvh w-full overflow-hidden bg-white font-sans text-[#1A1A21]">
+    <div className="flex h-dvh w-full overflow-hidden bg-white font-sans text-ink">
       {/* Desktop sidebar */}
       <div className="hidden lg:contents">
         <Sidebar />
@@ -41,7 +41,7 @@ export default function Home() {
           <div className="flex min-w-0 items-center gap-2">
             <button
               onClick={() => setNavOpen(true)}
-              className="grid size-9 shrink-0 place-items-center rounded-lg border border-[#ECECEF] text-[#6B7280] transition-colors hover:bg-[#F7F7F9] lg:hidden"
+              className="grid size-9 shrink-0 place-items-center rounded-lg border border-line text-muted transition-colors hover:bg-surface-soft lg:hidden"
               aria-label="Open menu"
             >
               <Menu className="size-5" />
@@ -49,20 +49,20 @@ export default function Home() {
             <h1 className="truncate text-xl font-bold tracking-tight sm:text-2xl">
               Clickwrap Templates
             </h1>
-            <Info className="hidden size-4 shrink-0 text-[#9CA3AF] sm:block" />
+            <Info className="hidden size-4 shrink-0 text-faint sm:block" />
           </div>
-          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#F1EDFF] text-[#6C47FF]">
+          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">
             <User className="size-4" />
           </span>
         </header>
 
         {/* Toolbar */}
         <div className="flex shrink-0 flex-wrap items-center gap-3 px-4 py-4 sm:px-8 sm:py-5">
-          <div className="flex h-10 min-w-[180px] flex-1 items-center gap-2 rounded-xl border border-[#E5E7EB] px-3 text-sm text-[#9CA3AF] sm:w-72 sm:flex-none">
+          <div className="flex h-10 min-w-[180px] flex-1 items-center gap-2 rounded-xl border border-line px-3 text-sm text-faint sm:w-72 sm:flex-none">
             <Search className="size-4 shrink-0" />
             <input
               placeholder="Search by tempates"
-              className="w-full bg-transparent text-[#1A1A21] outline-none placeholder:text-[#9CA3AF]"
+              className="w-full bg-transparent text-ink outline-none placeholder:text-faint"
             />
           </div>
 
@@ -70,13 +70,13 @@ export default function Home() {
           <FilterButton label="Status" />
 
           <button
-            className="grid size-10 shrink-0 place-items-center rounded-xl border border-[#E5E7EB] text-[#6B7280] transition-colors hover:bg-[#F7F7F9]"
+            className="grid size-10 shrink-0 place-items-center rounded-xl border border-line text-muted transition-colors hover:bg-surface-soft"
             aria-label="Add filter"
           >
             <Plus className="size-4" />
           </button>
 
-          <button className="ml-auto flex h-10 shrink-0 items-center gap-2 rounded-xl bg-[#6C47FF] px-4 text-sm font-medium text-white transition-colors hover:bg-[#5B39E0]">
+          <button className="ml-auto flex h-10 shrink-0 items-center gap-2 rounded-xl bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover">
             <Plus className="size-4" />
             <span className="hidden sm:inline">New template</span>
             <span className="sm:hidden">New</span>
@@ -100,10 +100,10 @@ function FilterButton({
   label: string;
 }) {
   return (
-    <button className="flex h-10 shrink-0 items-center gap-2 rounded-xl border border-[#E5E7EB] px-3 text-sm font-medium text-[#374151] transition-colors hover:bg-[#F7F7F9]">
-      {icon && <span className="text-[#6B7280]">{icon}</span>}
+    <button className="flex h-10 shrink-0 items-center gap-2 rounded-xl border border-line px-3 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
+      {icon && <span className="text-muted">{icon}</span>}
       {label}
-      <ChevronDown className="size-4 text-[#9CA3AF]" />
+      <ChevronDown className="size-4 text-faint" />
     </button>
   );
 }

@@ -13,7 +13,7 @@ export function TemplatesTable() {
     <div className="min-w-[1024px]">
       {/* Header */}
       <div
-        className={`${GRID} border-y border-[#ECECEF] bg-[#FAFAFB] text-[11px] font-medium uppercase tracking-wide text-[#9CA3AF]`}
+        className={`${GRID} border-y border-line bg-surface text-[11px] font-medium uppercase tracking-wide text-faint`}
       >
         <HeadCell>Created date</HeadCell>
         <HeadCell>Template name</HeadCell>
@@ -40,7 +40,7 @@ function HeadCell({
 }) {
   return (
     <div
-      className={`flex items-center px-4 py-3 ${divider ? "border-l border-[#ECECEF]" : ""}`}
+      className={`flex items-center px-4 py-3 ${divider ? "border-l border-line" : ""}`}
     >
       {children}
     </div>
@@ -56,7 +56,7 @@ function Cell({
 }) {
   return (
     <div
-      className={`flex items-center px-4 py-4 ${divider ? "border-l border-[#ECECEF]" : ""}`}
+      className={`flex items-center px-4 py-4 ${divider ? "border-l border-line" : ""}`}
     >
       {children}
     </div>
@@ -69,20 +69,20 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, delay: index * 0.025, ease: "easeOut" }}
-      className={`${GRID} border-b border-[#F1F1F4] transition-colors hover:bg-[#FAFAFA]`}
+      className={`${GRID} border-b border-line-soft transition-colors hover:bg-surface`}
     >
       <Cell>
-        <span className="text-sm text-[#6B7280]">{row.date}</span>
+        <span className="text-sm text-muted">{row.date}</span>
       </Cell>
 
       <Cell>
-        <button className="text-left text-[15px] font-semibold text-[#1A1A21] underline decoration-dotted decoration-[#D1D5DB] underline-offset-4 hover:decoration-[#6C47FF]">
+        <button className="text-left text-[15px] font-semibold text-ink underline decoration-dotted decoration-[#D1D5DB] underline-offset-4 hover:decoration-accent">
           {row.name}
         </button>
       </Cell>
 
       <Cell>
-        <span className="text-sm text-[#374151]">{row.version}</span>
+        <span className="text-sm text-ink-soft">{row.version}</span>
       </Cell>
 
       <Cell>
@@ -99,11 +99,11 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
 
       <Cell divider>
         <div className="flex items-center gap-2">
-          <button className="rounded-lg border border-[#E6E6E9] px-3 py-1.5 text-sm font-medium text-[#374151] transition-colors hover:bg-[#F7F7F9]">
+          <button className="rounded-lg border border-line px-3 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
             View events
           </button>
           <button
-            className="grid size-8 place-items-center rounded-lg text-[#9CA3AF] transition-colors hover:bg-[#F7F7F9]"
+            className="grid size-8 place-items-center rounded-lg text-faint transition-colors hover:bg-surface-soft"
             aria-label="More actions"
           >
             <MoreVertical className="size-4" />
@@ -117,7 +117,7 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
 function TagCell({ tags, more }: { tags: string[]; more?: number }) {
   if (tags.length === 0) {
     return (
-      <button className="flex w-fit items-center gap-1 text-sm text-[#9CA3AF] hover:text-[#6C47FF]">
+      <button className="flex w-fit items-center gap-1 text-sm text-faint hover:text-accent">
         <Plus className="size-3.5" />
         Add tag
       </button>
@@ -138,7 +138,7 @@ function TagCell({ tags, more }: { tags: string[]; more?: number }) {
         );
       })}
       {more ? (
-        <span className="rounded-md bg-[#F1F0F6] px-2 py-1 text-xs font-medium text-[#6B7280]">
+        <span className="rounded-md bg-line-soft px-2 py-1 text-xs font-medium text-muted">
           +{more}
         </span>
       ) : null}
@@ -152,7 +152,7 @@ function Toggle({ initial }: { initial: boolean }) {
     <button
       onClick={() => setOn((v) => !v)}
       className={`relative h-6 w-11 rounded-full transition-colors ${
-        on ? "bg-[#6C47FF]" : "bg-[#E5E7EB]"
+        on ? "bg-accent" : "bg-line"
       }`}
       role="switch"
       aria-checked={on}
@@ -178,12 +178,12 @@ function TemplateId({ value }: { value: string }) {
 
   return (
     <div className="flex items-center gap-1.5">
-      <span className="text-sm text-[#6B7280] underline decoration-dotted decoration-[#D1D5DB] underline-offset-4">
+      <span className="text-sm text-muted underline decoration-dotted decoration-[#D1D5DB] underline-offset-4">
         {value}
       </span>
       <button
         onClick={copy}
-        className="text-[#9CA3AF] transition-colors hover:text-[#6C47FF]"
+        className="text-faint transition-colors hover:text-accent"
         aria-label="Copy template ID"
       >
         {copied ? (
