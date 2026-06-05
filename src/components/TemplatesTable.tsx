@@ -6,7 +6,7 @@ import { Check, Copy, MoreVertical, Plus } from "lucide-react";
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
 
 const GRID =
-  "grid grid-cols-[110px_minmax(220px,1.4fr)_90px_minmax(280px,1.2fr)_110px_140px_180px]";
+  "grid grid-cols-[110px_minmax(220px,1.4fr)_90px_minmax(280px,1.2fr)_110px_140px_205px]";
 
 export function TemplatesTable() {
   return (
@@ -114,11 +114,11 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
 
       <Cell last>
         <div className="flex items-center gap-1.5">
-          <button className="rounded-ctl border border-line-strong px-2.5 py-1.5 text-[13px] font-medium text-ink transition-colors hover:bg-surface">
+          <button className="shrink-0 whitespace-nowrap rounded-ctl border border-line-strong px-2.5 py-1.5 text-[13px] font-medium text-ink transition-colors hover:bg-surface">
             View events
           </button>
           <button
-            className="grid size-8 place-items-center rounded-ctl text-faint transition-colors hover:bg-surface-soft"
+            className="grid size-8 shrink-0 place-items-center rounded-ctl text-faint transition-colors hover:bg-surface-soft"
             aria-label="More actions"
           >
             <MoreVertical className="size-4" />
