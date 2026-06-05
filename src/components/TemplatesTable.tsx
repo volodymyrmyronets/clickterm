@@ -18,11 +18,11 @@ import {
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
 
 const GRID =
-  "grid grid-cols-[180px_minmax(230px,1.4fr)_120px_minmax(280px,1.2fr)_140px_160px_205px]";
+  "grid grid-cols-[180px_minmax(230px,1.4fr)_120px_minmax(280px,1.2fr)_140px_160px_max-content]";
 
 export function TemplatesTable() {
   return (
-    <div className="min-w-[1024px]">
+    <div className="w-full min-w-[1024px]">
       {/* Header */}
       <div className={`${GRID} sticky top-0 z-10 border-y border-line-strong bg-white`}>
         <HeadCell first icon={<Calendar className="size-3.5" />} sortable>
