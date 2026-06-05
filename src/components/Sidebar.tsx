@@ -44,7 +44,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
       className="flex h-full shrink-0 flex-col border-r border-line bg-sidebar"
     >
       {/* Brand */}
-      <div className="flex h-[72px] shrink-0 items-center justify-between px-4">
+      <div className="flex h-20 shrink-0 items-center justify-between px-4">
         {!showCollapsed && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src="/logos/Frame.svg" alt="ClickTerm" className="h-6 w-auto" />
