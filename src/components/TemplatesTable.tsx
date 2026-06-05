@@ -13,7 +13,7 @@ export function TemplatesTable() {
     <div className="min-w-[1024px]">
       {/* Header */}
       <div className={`${GRID} border-b border-line-strong bg-white`}>
-        <HeadCell>Created date</HeadCell>
+        <HeadCell first>Created date</HeadCell>
         <HeadCell>Template name</HeadCell>
         <HeadCell>Version</HeadCell>
         <HeadCell>Tags</HeadCell>
@@ -29,18 +29,28 @@ export function TemplatesTable() {
   );
 }
 
+// Align the first/last columns with the page padding (px-8 on desktop).
+function edgePad(first?: boolean, last?: boolean) {
+  if (first) return "pl-4 pr-4 sm:pl-8";
+  if (last) return "pl-4 pr-4 sm:pr-8";
+  return "px-4";
+}
+
 function HeadCell({
   children,
+  first,
   last,
 }: {
   children: React.ReactNode;
+  first?: boolean;
   last?: boolean;
 }) {
   return (
     <div
-      className={`flex h-11 min-w-0 items-center px-4 text-[13px] font-medium text-ink-soft ${
-        last ? "" : "border-r border-grid"
-      }`}
+      className={`flex h-11 min-w-0 items-center text-[13px] font-medium text-ink-soft ${edgePad(
+        first,
+        last,
+      )} ${last ? "" : "border-r border-grid"}`}
     >
       {children}
     </div>
@@ -49,14 +59,19 @@ function HeadCell({
 
 function Cell({
   children,
+  first,
   last,
 }: {
   children: React.ReactNode;
+  first?: boolean;
   last?: boolean;
 }) {
   return (
     <div
-      className={`flex h-[52px] min-w-0 items-center overflow-hidden px-4 ${last ? "" : "border-r border-grid"}`}
+      className={`flex h-[52px] min-w-0 items-center overflow-hidden ${edgePad(
+        first,
+        last,
+      )} ${last ? "" : "border-r border-grid"}`}
     >
       {children}
     </div>
@@ -71,7 +86,7 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
       transition={{ duration: 0.22, delay: index * 0.022, ease: "easeOut" }}
       className={`${GRID} border-b border-line transition-colors hover:bg-surface`}
     >
-      <Cell>
+      <Cell first>
         <span className="text-sm text-muted">{row.date}</span>
       </Cell>
 
