@@ -132,7 +132,7 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
 function TagCell({ tags, more }: { tags: string[]; more?: number }) {
   if (tags.length === 0) {
     return (
-      <button className="inline-flex h-[21px] w-fit items-center gap-1 rounded-ctl border border-dashed border-line-strong px-2 text-xs text-faint transition-colors hover:border-accent-softer hover:bg-accent-soft hover:text-accent">
+      <button className="inline-flex h-[21px] w-fit items-center gap-1 rounded-[2px] border border-dashed border-line-strong px-2 text-xs text-faint transition-colors hover:border-accent-softer hover:bg-accent-soft hover:text-accent">
         <Plus className="size-3" />
         Add tag
       </button>
@@ -145,7 +145,7 @@ function TagCell({ tags, more }: { tags: string[]; more?: number }) {
         return (
           <span
             key={t}
-            className="inline-flex h-[21px] shrink-0 items-center rounded-ctl px-[7px] text-xs font-medium"
+            className="inline-flex h-[21px] shrink-0 items-center rounded-[2px] px-[7px] text-xs font-medium"
             style={{ backgroundColor: c.bg, color: c.text }}
           >
             {t}
@@ -153,7 +153,7 @@ function TagCell({ tags, more }: { tags: string[]; more?: number }) {
         );
       })}
       {more ? (
-        <span className="inline-flex h-[21px] shrink-0 items-center rounded-ctl bg-[#f0f0f2] px-[7px] text-xs font-medium text-ink-soft">
+        <span className="inline-flex h-[21px] shrink-0 items-center rounded-[2px] bg-[#f0f0f2] px-[7px] text-xs font-medium text-ink-soft">
           +{more}
         </span>
       ) : null}
