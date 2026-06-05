@@ -13,7 +13,6 @@ import {
   Layers,
   MoreVertical,
   Plus,
-  Send,
   Tag,
 } from "lucide-react";
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
@@ -106,7 +105,6 @@ function Cell({
 }
 
 function Row({ row, index }: { row: TemplateRow; index: number }) {
-  const ic = tagColor(row.name);
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
@@ -119,17 +117,9 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
       </Cell>
 
       <Cell>
-        <div className="flex min-w-0 items-center gap-2.5">
-          <span
-            className="grid size-6 shrink-0 place-items-center rounded-ctl"
-            style={{ backgroundColor: ic.bg }}
-          >
-            <Send className="size-3.5 -rotate-12" style={{ color: ic.text }} />
-          </span>
-          <button className="truncate text-left text-sm font-medium text-ink underline decoration-dotted decoration-[#d3d3d7] underline-offset-4 hover:decoration-accent">
-            {row.name}
-          </button>
-        </div>
+        <button className="truncate text-left text-sm font-medium text-ink underline decoration-dotted decoration-[#d3d3d7] underline-offset-4 hover:decoration-accent">
+          {row.name}
+        </button>
       </Cell>
 
       <Cell>
