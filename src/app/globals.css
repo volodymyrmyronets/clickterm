@@ -28,8 +28,8 @@
   --color-surface-soft: #f3f3f4; /* hover chips */
   --color-sidebar: #f4f4f6; /* left navigation background */
 
-  /* Control radius — balanced, Attio-like (table stays sharp) */
-  --radius-ctl: 6px;
+  /* Control radius — tight (table stays sharp; tags use 2px) */
+  --radius-ctl: 4px;
 }
 
 html,
