@@ -20,6 +20,7 @@ import {
   List,
   Mail,
   MapPin,
+  Pencil,
   Phone,
   Plus,
   Receipt,
@@ -51,6 +52,7 @@ export default function NewTemplate() {
   const [tab, setTab] = useState<"placeholders" | "versions">("placeholders");
   const [empty, setEmpty] = useState(true);
   const editorRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLHeadingElement>(null);
 
   function exec(cmd: string, value?: string) {
     editorRef.current?.focus();
@@ -102,11 +104,23 @@ export default function NewTemplate() {
       <div className="min-h-0 flex-1 overflow-auto">
         <div className="mx-auto w-full max-w-[1340px] px-4 py-6 sm:px-10 sm:py-7">
           {/* Head */}
-          <div>
-            <h1 className="text-[28px] font-bold tracking-tight">New Template</h1>
-            <p className="mt-1.5 text-[13.5px] font-medium text-muted">
-              Version 1.0
-            </p>
+          <div className="group/title flex items-center gap-1.5">
+            <h1
+              ref={nameRef}
+              contentEditable
+              suppressContentEditableWarning
+              spellCheck={false}
+              className="-mx-1.5 rounded-ctl px-1.5 text-[28px] font-bold tracking-tight outline-none focus:bg-white focus:shadow-[0_0_0_2px_rgba(91,57,240,.3)]"
+            >
+              New Template
+            </h1>
+            <button
+              onClick={() => nameRef.current?.focus()}
+              className="grid size-8 place-items-center rounded-ctl text-faint opacity-0 transition-all hover:bg-surface-soft hover:text-ink focus-visible:opacity-100 group-hover/title:opacity-100"
+              aria-label="Rename template"
+            >
+              <Pencil className="size-[18px]" />
+            </button>
           </div>
 
           {/* Language tabs */}

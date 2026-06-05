@@ -12,7 +12,7 @@ export function TemplatesTable() {
   return (
     <div className="min-w-[1024px]">
       {/* Header */}
-      <div className={`${GRID} border-b border-line-strong bg-white`}>
+      <div className={`${GRID} border-y border-line-strong bg-white`}>
         <HeadCell first>Created date</HeadCell>
         <HeadCell>Template name</HeadCell>
         <HeadCell>Version</HeadCell>
