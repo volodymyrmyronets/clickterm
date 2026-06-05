@@ -28,8 +28,8 @@
   --color-surface-soft: #f3f3f4; /* hover chips */
   --color-sidebar: #f4f4f6; /* left navigation background */
 
-  /* Square radius */
-  --radius-ctl: 4px;
+  /* Control radius — balanced, Attio-like (table stays sharp) */
+  --radius-ctl: 6px;
 }
 
 html,
@@ -41,7 +41,6 @@ body {
   background-color: #ffffff;
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
 }
 

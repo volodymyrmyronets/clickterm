@@ -38,7 +38,7 @@ function HeadCell({
 }) {
   return (
     <div
-      className={`flex h-10 min-w-0 items-center px-3.5 text-[13px] font-medium text-ink-soft ${
+      className={`flex h-11 min-w-0 items-center px-4 text-[13px] font-medium text-ink-soft ${
         last ? "" : "border-r border-grid"
       }`}
     >
@@ -56,7 +56,7 @@ function Cell({
 }) {
   return (
     <div
-      className={`flex h-12 min-w-0 items-center overflow-hidden px-3.5 ${last ? "" : "border-r border-grid"}`}
+      className={`flex h-[52px] min-w-0 items-center overflow-hidden px-4 ${last ? "" : "border-r border-grid"}`}
     >
       {children}
     </div>
@@ -178,7 +178,7 @@ function TemplateId({ value }: { value: string }) {
 
   return (
     <div className="flex items-center gap-1.5">
-      <span className="font-mono text-[13px] text-muted underline decoration-dotted decoration-[#d3d3d7] underline-offset-4">
+      <span className="text-[13px] text-muted underline decoration-dotted decoration-[#d3d3d7] underline-offset-4">
         {value}
       </span>
       <button
