@@ -7,6 +7,7 @@ import {
   ChevronDown,
   FileUp,
   Info,
+  ListFilter,
   Menu,
   Plus,
   Search,
@@ -77,7 +78,7 @@ export default function Home() {
           </div>
 
           <FilterButton icon={<Calendar className="size-4" />} label="Created date" />
-          <FilterButton label="Status" />
+          <FilterButton icon={<ListFilter className="size-4" />} label="Status" />
 
           <button
             className="grid size-10 shrink-0 place-items-center rounded-ctl border border-line-strong text-muted transition-colors hover:bg-surface-soft"

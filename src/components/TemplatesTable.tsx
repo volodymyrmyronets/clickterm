@@ -2,23 +2,43 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Copy, MoreVertical, Plus } from "lucide-react";
+import {
+  Calendar,
+  Check,
+  CheckCheck,
+  ChevronDown,
+  Copy,
+  FileText,
+  Hash,
+  Layers,
+  MoreVertical,
+  Plus,
+  Tag,
+} from "lucide-react";
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
 
 const GRID =
-  "grid grid-cols-[150px_minmax(220px,1.4fr)_90px_minmax(280px,1.2fr)_110px_140px_205px]";
+  "grid grid-cols-[180px_minmax(230px,1.4fr)_120px_minmax(280px,1.2fr)_140px_160px_205px]";
 
 export function TemplatesTable() {
   return (
     <div className="min-w-[1024px]">
       {/* Header */}
       <div className={`${GRID} sticky top-0 z-10 border-y border-line-strong bg-white`}>
-        <HeadCell first>Created date</HeadCell>
-        <HeadCell>Template name</HeadCell>
-        <HeadCell>Version</HeadCell>
-        <HeadCell>Tags</HeadCell>
-        <HeadCell>Published</HeadCell>
-        <HeadCell>Template ID</HeadCell>
+        <HeadCell first icon={<Calendar className="size-3.5" />} sortable>
+          Created date
+        </HeadCell>
+        <HeadCell icon={<FileText className="size-3.5" />} sortable>
+          Template name
+        </HeadCell>
+        <HeadCell icon={<Layers className="size-3.5" />} sortable>
+          Version
+        </HeadCell>
+        <HeadCell icon={<Tag className="size-3.5" />}>Tags</HeadCell>
+        <HeadCell icon={<CheckCheck className="size-3.5" />} sortable>
+          Published
+        </HeadCell>
+        <HeadCell icon={<Hash className="size-3.5" />}>Template ID</HeadCell>
         <HeadCell last>Actions</HeadCell>
       </div>
 
@@ -38,21 +58,27 @@ function edgePad(first?: boolean, last?: boolean) {
 
 function HeadCell({
   children,
+  icon,
+  sortable,
   first,
   last,
 }: {
   children: React.ReactNode;
+  icon?: React.ReactNode;
+  sortable?: boolean;
   first?: boolean;
   last?: boolean;
 }) {
   return (
     <div
-      className={`flex h-11 min-w-0 items-center whitespace-nowrap text-[13px] font-medium text-ink-soft ${edgePad(
+      className={`flex h-11 min-w-0 items-center gap-1.5 whitespace-nowrap text-[13px] font-medium text-ink-soft ${edgePad(
         first,
         last,
       )} ${last ? "" : "border-r border-grid"}`}
     >
-      {children}
+      {icon && <span className="shrink-0 text-faint">{icon}</span>}
+      <span className="truncate">{children}</span>
+      {sortable && <ChevronDown className="size-3.5 shrink-0 text-faint" />}
     </div>
   );
 }
