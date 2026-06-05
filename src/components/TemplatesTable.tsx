@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+
+const useIsoLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 import {
   Calendar,
   Check,
@@ -129,7 +132,7 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
       </Cell>
 
       <Cell>
-        <TagCell tags={row.tags} more={row.more} />
+        <TagCell tags={row.tags} />
       </Cell>
 
       <Cell>
@@ -157,7 +160,45 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
   );
 }
 
-function TagCell({ tags, more }: { tags: string[]; more?: number }) {
+function TagCell({ tags }: { tags: string[] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  // null = "measuring" (render all tags so widths can be read)
+  const [shown, setShown] = useState<number | null>(null);
+
+  useIsoLayoutEffect(() => {
+    setShown(null);
+  }, [tags]);
+
+  useIsoLayoutEffect(() => {
+    if (shown !== null) return;
+    const el = ref.current;
+    if (!el) return;
+    const cw = el.clientWidth;
+    const chips = Array.from(el.querySelectorAll<HTMLElement>("[data-tag]"));
+    if (chips.length === 0) return;
+    const last = chips[chips.length - 1];
+    if (last.offsetLeft + last.offsetWidth <= cw) {
+      setShown(tags.length); // everything fits
+      return;
+    }
+    const reserve = 44; // room for the "+N" chip
+    let fit = 0;
+    for (let i = 0; i < chips.length; i++) {
+      const c = chips[i];
+      if (c.offsetLeft + c.offsetWidth > cw - reserve) break;
+      fit = i + 1;
+    }
+    setShown(Math.max(1, fit));
+  }, [shown, tags]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setShown(null));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   if (tags.length === 0) {
     return (
       <button className="inline-flex h-[21px] w-fit items-center gap-1 rounded-[2px] border border-dashed border-line-strong px-2 text-xs text-faint transition-colors hover:border-accent-softer hover:bg-accent-soft hover:text-accent">
@@ -166,13 +207,19 @@ function TagCell({ tags, more }: { tags: string[]; more?: number }) {
       </button>
     );
   }
+
+  const measuring = shown === null;
+  const visible = measuring ? tags : tags.slice(0, shown);
+  const hidden = measuring ? [] : tags.slice(shown);
+
   return (
-    <div className="flex items-center gap-1.5 overflow-hidden">
-      {tags.map((t) => {
+    <div ref={ref} className="flex items-center gap-1.5 overflow-hidden">
+      {visible.map((t) => {
         const c = tagColor(t);
         return (
           <span
             key={t}
+            data-tag
             className="inline-flex h-[21px] shrink-0 items-center rounded-[2px] px-[7px] text-xs font-medium"
             style={{ backgroundColor: c.bg, color: c.text }}
           >
@@ -180,11 +227,14 @@ function TagCell({ tags, more }: { tags: string[]; more?: number }) {
           </span>
         );
       })}
-      {more ? (
-        <span className="inline-flex h-[21px] shrink-0 items-center rounded-[2px] bg-[#f0f0f2] px-[7px] text-xs font-medium text-ink-soft">
-          +{more}
+      {hidden.length > 0 && (
+        <span
+          title={hidden.join(", ")}
+          className="inline-flex h-[21px] shrink-0 cursor-default items-center rounded-[2px] bg-[#f0f0f2] px-[7px] text-xs font-medium text-ink-soft"
+        >
+          +{hidden.length}
         </span>
-      ) : null}
+      )}
     </div>
   );
 }
