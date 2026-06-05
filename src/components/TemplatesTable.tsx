@@ -18,7 +18,7 @@ import {
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
 
 const GRID =
-  "grid grid-cols-[175px_minmax(0,1.4fr)_115px_minmax(0,1.4fr)_140px_minmax(0,1.2fr)_max-content]";
+  "grid grid-cols-[175px_minmax(0,1.4fr)_125px_minmax(0,1.4fr)_140px_minmax(0,1.2fr)_190px]";
 
 export function TemplatesTable() {
   return (
