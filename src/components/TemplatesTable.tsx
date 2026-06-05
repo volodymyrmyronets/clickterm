@@ -6,7 +6,7 @@ import { Check, Copy, MoreVertical, Plus } from "lucide-react";
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
 
 const GRID =
-  "grid grid-cols-[120px_minmax(240px,1.5fr)_100px_minmax(200px,1fr)_120px_150px_180px]";
+  "grid grid-cols-[110px_minmax(220px,1.4fr)_90px_minmax(280px,1.2fr)_110px_140px_180px]";
 
 export function TemplatesTable() {
   return (
@@ -38,7 +38,7 @@ function HeadCell({
 }) {
   return (
     <div
-      className={`flex h-10 items-center px-3.5 text-[13px] font-medium text-ink-soft ${
+      className={`flex h-10 min-w-0 items-center px-3.5 text-[13px] font-medium text-ink-soft ${
         last ? "" : "border-r border-grid"
       }`}
     >
@@ -56,7 +56,7 @@ function Cell({
 }) {
   return (
     <div
-      className={`flex h-12 items-center px-3.5 ${last ? "" : "border-r border-grid"}`}
+      className={`flex h-12 min-w-0 items-center overflow-hidden px-3.5 ${last ? "" : "border-r border-grid"}`}
     >
       {children}
     </div>
