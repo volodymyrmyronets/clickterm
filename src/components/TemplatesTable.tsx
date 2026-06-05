@@ -13,7 +13,7 @@ export function TemplatesTable() {
     <div className="min-w-[1024px]">
       {/* Header */}
       <div
-        className={`${GRID} border-y border-line bg-surface text-[11px] font-medium uppercase tracking-wide text-faint`}
+        className={`${GRID} border-y border-line bg-surface text-[11px] font-semibold uppercase tracking-wide text-ink-soft`}
       >
         <HeadCell>Created date</HeadCell>
         <HeadCell>Template name</HeadCell>
@@ -151,16 +151,16 @@ function Toggle({ initial }: { initial: boolean }) {
   return (
     <button
       onClick={() => setOn((v) => !v)}
-      className={`relative h-6 w-11 rounded-full transition-colors ${
-        on ? "bg-accent" : "bg-line"
+      className={`relative h-5 w-9 rounded-full transition-colors ${
+        on ? "bg-accent" : "bg-[#D8D8DE]"
       }`}
       role="switch"
       aria-checked={on}
       aria-label="Published"
     >
       <span
-        className={`absolute top-0.5 size-5 rounded-full bg-white shadow-sm transition-all ${
-          on ? "left-[22px]" : "left-0.5"
+        className={`absolute top-0.5 size-4 rounded-full bg-white shadow-sm transition-all ${
+          on ? "left-[18px]" : "left-0.5"
         }`}
       />
     </button>
