@@ -37,6 +37,7 @@ const FOOTER_NAV = [
 /** `onClose` is passed when rendered inside the mobile drawer. */
 export function Sidebar({ onClose }: { onClose?: () => void }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [inviteDismissed, setInviteDismissed] = useState(false);
   const isDrawer = !!onClose;
   const showCollapsed = !isDrawer && collapsed;
 
@@ -107,7 +108,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
 
       {/* Invite card */}
       <AnimatePresence>
-        {!showCollapsed && (
+        {!showCollapsed && !inviteDismissed && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,6 +116,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
             className="relative m-3 rounded-ctl border border-line bg-white p-4"
           >
             <button
+              onClick={() => setInviteDismissed(true)}
               className="absolute right-3 top-3 text-faint hover:text-muted"
               aria-label="Dismiss"
             >
