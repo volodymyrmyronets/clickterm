@@ -13,6 +13,7 @@ import {
   Layers,
   MoreVertical,
   Plus,
+  Send,
   Tag,
 } from "lucide-react";
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
@@ -71,7 +72,7 @@ function HeadCell({
 }) {
   return (
     <div
-      className={`flex h-11 min-w-0 items-center gap-1.5 whitespace-nowrap text-[13px] font-medium text-ink-soft ${edgePad(
+      className={`flex h-10 min-w-0 items-center gap-1.5 whitespace-nowrap text-[13px] font-medium text-ink-soft ${edgePad(
         first,
         last,
       )} ${last ? "" : "border-r border-grid"}`}
@@ -94,7 +95,7 @@ function Cell({
 }) {
   return (
     <div
-      className={`flex h-[58px] min-w-0 items-center overflow-hidden ${edgePad(
+      className={`flex h-[50px] min-w-0 items-center overflow-hidden ${edgePad(
         first,
         last,
       )} ${last ? "" : "border-r border-grid"}`}
@@ -105,6 +106,7 @@ function Cell({
 }
 
 function Row({ row, index }: { row: TemplateRow; index: number }) {
+  const ic = tagColor(row.name);
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
@@ -117,13 +119,23 @@ function Row({ row, index }: { row: TemplateRow; index: number }) {
       </Cell>
 
       <Cell>
-        <button className="truncate text-left text-sm font-medium text-ink underline decoration-dotted decoration-[#d3d3d7] underline-offset-4 hover:decoration-accent">
-          {row.name}
-        </button>
+        <div className="flex min-w-0 items-center gap-2.5">
+          <span
+            className="grid size-6 shrink-0 place-items-center rounded-ctl"
+            style={{ backgroundColor: ic.bg }}
+          >
+            <Send className="size-3.5 -rotate-12" style={{ color: ic.text }} />
+          </span>
+          <button className="truncate text-left text-sm font-medium text-ink underline decoration-dotted decoration-[#d3d3d7] underline-offset-4 hover:decoration-accent">
+            {row.name}
+          </button>
+        </div>
       </Cell>
 
       <Cell>
-        <span className="text-sm text-ink-soft">{row.version}</span>
+        <span className="inline-flex h-6 items-center rounded-ctl border border-line-strong px-2 text-[13px] text-ink">
+          {row.version}
+        </span>
       </Cell>
 
       <Cell>
