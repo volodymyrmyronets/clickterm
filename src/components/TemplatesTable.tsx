@@ -18,11 +18,11 @@ import {
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
 
 const GRID =
-  "grid grid-cols-[180px_minmax(230px,1.4fr)_120px_minmax(280px,1.2fr)_140px_160px_max-content]";
+  "grid grid-cols-[175px_minmax(0,1.4fr)_115px_minmax(0,1.4fr)_140px_minmax(0,1.2fr)_max-content]";
 
 export function TemplatesTable() {
   return (
-    <div className="w-full min-w-[1024px]">
+    <div className="w-full">
       {/* Header */}
       <div className={`${GRID} sticky top-0 z-10 border-y border-line-strong bg-white`}>
         <HeadCell first icon={<Calendar className="size-3.5" />} sortable>
@@ -220,13 +220,13 @@ function TemplateId({ value }: { value: string }) {
   }
 
   return (
-    <div className="flex items-center gap-1.5">
-      <span className="text-[13px] text-muted underline decoration-dotted decoration-[#d3d3d7] underline-offset-4">
+    <div className="flex min-w-0 items-center gap-1.5">
+      <span className="truncate text-[13px] text-muted underline decoration-dotted decoration-[#d3d3d7] underline-offset-4">
         {value}
       </span>
       <button
         onClick={copy}
-        className="text-faint transition-colors hover:text-accent"
+        className="shrink-0 text-faint transition-colors hover:text-accent"
         aria-label="Copy template ID"
       >
         {copied ? (
