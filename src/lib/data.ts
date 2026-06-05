@@ -112,21 +112,24 @@ export interface TagColor {
   text: string;
 }
 
+// Direction 1 tag palette — one cohesive low-saturation set.
 const TAG_COLORS: Record<string, TagColor> = {
-  mainaccount: { bg: "#F1EDFF", text: "#6C47FF" },
-  registration_only: { bg: "#F3E8FF", text: "#9333EA" },
-  subaccount: { bg: "#E6EFFE", text: "#2563EB" },
-  account_update: { bg: "#CCFBF1", text: "#0D9488" },
-  registration: { bg: "#FCE7F3", text: "#DB2777" },
-  "tag-test": { bg: "#EEF0FB", text: "#5B5FCF" },
-  login_only: { bg: "#FEF3C7", text: "#D97706" },
+  mainaccount: { bg: "#efeafe", text: "#5b39f0" }, // violet
+  subaccount: { bg: "#e8f0fd", text: "#1d63d8" }, // blue
+  registration_only: { bg: "#eef0f3", text: "#475569" }, // slate
+  account_update: { bg: "#e1f4f1", text: "#0f766e" }, // teal
+  registration: { bg: "#fbe9ef", text: "#bb1d6a" }, // rose
+  "tag-test": { bg: "#e7f6ec", text: "#15803d" }, // green
+  login_only: { bg: "#fbf1da", text: "#a85d09" }, // amber
 };
 
 const FALLBACK: TagColor[] = [
-  { bg: "#E6EFFE", text: "#2563EB" },
-  { bg: "#CCFBF1", text: "#0D9488" },
-  { bg: "#FCE7F3", text: "#DB2777" },
-  { bg: "#FEF3C7", text: "#D97706" },
+  { bg: "#e8f0fd", text: "#1d63d8" },
+  { bg: "#e1f4f1", text: "#0f766e" },
+  { bg: "#fbe9ef", text: "#bb1d6a" },
+  { bg: "#fbf1da", text: "#a85d09" },
+  { bg: "#e7f6ec", text: "#15803d" },
+  { bg: "#eef0f3", text: "#475569" },
 ];
 
 export function tagColor(name: string): TagColor {

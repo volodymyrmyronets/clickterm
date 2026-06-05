@@ -1,33 +1,35 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Color palette (extracted from the ClickTerm dashboard).
-   Defined as Tailwind v4 theme tokens → usable as utilities:
-   bg-accent, text-ink, border-line, bg-surface, …
-   Category-tag colors live in src/lib/data.ts (tagColor).
+   Color palette — Direction 1 reference (square, compact, Attio-like).
+   Radius is 4px everywhere (rounded-ctl); toggles/avatars stay round.
 --------------------------------------------------------------------------- */
 @theme {
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Code", monospace;
 
   /* Brand / accent */
-  --color-accent: #6c47ff;
-  --color-accent-hover: #5b39e0;
-  --color-accent-soft: #f1edff; /* active nav, soft fills */
-  --color-accent-softer: #ede9fe; /* badges */
+  --color-accent: #5b39f0;
+  --color-accent-hover: #4f31d6;
+  --color-accent-soft: #f0edfe; /* active nav, soft fills */
+  --color-accent-softer: #e3ddff; /* badges / soft borders */
 
   /* Text */
-  --color-ink: #1a1a21; /* headings / primary */
-  --color-ink-soft: #374151; /* secondary text */
-  --color-muted: #6b7280; /* muted text */
-  --color-faint: #9ca3af; /* placeholders / faint */
+  --color-ink: #18181b; /* headings / primary */
+  --color-ink-soft: #54545c; /* secondary text / table headers */
+  --color-muted: #717179; /* muted text */
+  --color-faint: #9f9fa8; /* placeholders / faint */
 
   /* Lines & surfaces */
-  --color-line: #ececef; /* default borders */
-  --color-line-soft: #f1f1f4; /* row dividers, chips */
-  --color-surface: #fafafb; /* header / hover surfaces */
-  --color-surface-soft: #f7f7f9; /* hover chips / cards */
+  --color-line: #ededee; /* default borders */
+  --color-line-strong: #e0e0e2; /* control borders */
+  --color-grid: #f0f0f1; /* vertical column lines (fainter) */
+  --color-surface: #fafafa; /* row hover / subtle */
+  --color-surface-soft: #f3f3f4; /* hover chips */
   --color-sidebar: #f4f4f6; /* left navigation background */
+
+  /* Square radius */
+  --radius-ctl: 4px;
 }
 
 html,
@@ -39,6 +41,7 @@ body {
   background-color: #ffffff;
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
 }
 

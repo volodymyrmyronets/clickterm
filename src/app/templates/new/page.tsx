@@ -65,21 +65,21 @@ export default function NewTemplate() {
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="grid size-9 place-items-center rounded-lg border border-line text-muted transition-colors hover:bg-surface-soft"
+            className="grid size-9 place-items-center rounded-ctl border border-line text-muted transition-colors hover:bg-surface-soft"
             aria-label="Back"
           >
             <ChevronLeft className="size-4" />
           </Link>
           <h1 className="text-lg font-bold">New Template</h1>
-          <span className="rounded-md bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">
+          <span className="rounded-ctl bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">
             Version 1.0
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <button className="rounded-lg border border-line bg-white px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
+          <button className="rounded-ctl border border-line bg-white px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
             Preview
           </button>
-          <button className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover">
+          <button className="rounded-ctl bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover">
             Save Changes
           </button>
         </div>
@@ -88,15 +88,15 @@ export default function NewTemplate() {
       {/* Body */}
       <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 overflow-auto p-4 lg:grid-cols-[1fr_400px]">
         {/* Editor panel */}
-        <section className="flex min-h-[520px] flex-col rounded-2xl border border-line bg-white p-6">
+        <section className="flex min-h-[520px] flex-col rounded-ctl border border-line bg-white p-6">
           {/* Language tabs */}
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 rounded-lg border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink">
+            <button className="flex items-center gap-2 rounded-ctl border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink">
               <span className="size-1.5 rounded-full bg-accent" />
               English
             </button>
             <button
-              className="grid size-9 place-items-center rounded-lg border border-line text-muted transition-colors hover:bg-surface-soft"
+              className="grid size-9 place-items-center rounded-ctl border border-line text-muted transition-colors hover:bg-surface-soft"
               aria-label="Add language"
             >
               <Plus className="size-4" />
@@ -111,11 +111,11 @@ export default function NewTemplate() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Add title in English"
-            className="mt-2 w-full rounded-xl border border-line px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-faint focus:border-accent"
+            className="mt-2 w-full rounded-ctl border border-line px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-faint focus:border-accent"
           />
 
           {/* Editor */}
-          <div className="mt-4 flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-line">
+          <div className="mt-4 flex min-h-0 flex-1 flex-col overflow-hidden rounded-ctl border border-line">
             {/* Toolbar */}
             <div className="flex flex-wrap items-center gap-1 border-b border-line p-2">
               <ToolBtn onClick={() => exec("undo")} aria="Undo">
@@ -141,21 +141,21 @@ export default function NewTemplate() {
                 <Strikethrough className="size-4" />
               </ToolBtn>
               <Divider />
-              <button className="flex items-center gap-1 rounded-md px-1.5 py-1.5 text-muted transition-colors hover:bg-surface-soft">
+              <button className="flex items-center gap-1 rounded-ctl px-1.5 py-1.5 text-muted transition-colors hover:bg-surface-soft">
                 <span className="size-4 rounded bg-ink" />
                 <ChevronDown className="size-3 text-faint" />
               </button>
               <Divider />
               <button
                 onClick={() => exec("insertUnorderedList")}
-                className="flex items-center gap-1 rounded-md px-1.5 py-1.5 text-muted transition-colors hover:bg-surface-soft"
+                className="flex items-center gap-1 rounded-ctl px-1.5 py-1.5 text-muted transition-colors hover:bg-surface-soft"
               >
                 <List className="size-4" />
                 <ChevronDown className="size-3 text-faint" />
               </button>
               <button
                 onClick={() => exec("justifyLeft")}
-                className="flex items-center gap-1 rounded-md px-1.5 py-1.5 text-muted transition-colors hover:bg-surface-soft"
+                className="flex items-center gap-1 rounded-ctl px-1.5 py-1.5 text-muted transition-colors hover:bg-surface-soft"
               >
                 <AlignLeft className="size-4" />
                 <ChevronDown className="size-3 text-faint" />
@@ -194,7 +194,7 @@ export default function NewTemplate() {
               {empty && (
                 <div className="pointer-events-none absolute left-4 top-3.5 flex items-center gap-2 text-sm text-faint">
                   Type or press
-                  <kbd className="rounded-md border border-line bg-white px-2 py-0.5 text-xs text-muted shadow-sm">
+                  <kbd className="rounded-ctl border border-line bg-white px-2 py-0.5 text-xs text-muted shadow-sm">
                     /
                   </kbd>
                   for dynamic tags
@@ -205,9 +205,9 @@ export default function NewTemplate() {
         </section>
 
         {/* Right panel */}
-        <aside className="flex min-h-[520px] flex-col rounded-2xl border border-line bg-white p-4">
+        <aside className="flex min-h-[520px] flex-col rounded-ctl border border-line bg-white p-4">
           {/* Tabs */}
-          <div className="grid grid-cols-2 gap-1 rounded-xl bg-surface p-1">
+          <div className="grid grid-cols-2 gap-1 rounded-ctl bg-surface p-1">
             <TabButton
               active={tab === "placeholders"}
               onClick={() => setTab("placeholders")}
@@ -265,7 +265,7 @@ function ToolBtn({
     <button
       onClick={onClick}
       aria-label={aria}
-      className="grid size-8 place-items-center rounded-md text-ink-soft transition-colors hover:bg-surface-soft"
+      className="grid size-8 place-items-center rounded-ctl text-ink-soft transition-colors hover:bg-surface-soft"
     >
       {children}
     </button>
@@ -275,7 +275,7 @@ function ToolBtn({
 function Dropdown({ label, className }: { label: string; className?: string }) {
   return (
     <button
-      className={`flex items-center justify-between gap-1 rounded-md border border-line px-2 py-1.5 text-sm text-ink transition-colors hover:bg-surface-soft ${className ?? ""}`}
+      className={`flex items-center justify-between gap-1 rounded-ctl border border-line px-2 py-1.5 text-sm text-ink transition-colors hover:bg-surface-soft ${className ?? ""}`}
     >
       {label}
       <ChevronDown className="size-3.5 text-faint" />
@@ -301,7 +301,7 @@ function TabButton({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-center gap-2 rounded-lg py-2 text-sm font-medium transition-colors ${
+      className={`flex items-center justify-center gap-2 rounded-ctl py-2 text-sm font-medium transition-colors ${
         active ? "bg-white text-ink shadow-sm" : "text-muted hover:text-ink"
       }`}
     >
@@ -323,7 +323,7 @@ function Chip({
       draggable
       onDragStart={(e) => e.dataTransfer.setData("text/plain", label)}
       onClick={() => onInsert(label)}
-      className="flex items-center gap-2 rounded-lg border border-line bg-white px-3 py-2.5 text-left text-sm text-ink-soft transition-colors hover:border-accent hover:bg-surface-soft"
+      className="flex items-center gap-2 rounded-ctl border border-line bg-white px-3 py-2.5 text-left text-sm text-ink-soft transition-colors hover:border-accent hover:bg-surface-soft"
     >
       <GripVertical className="size-4 shrink-0 text-accent" />
       <span className="truncate">{label}</span>
@@ -341,13 +341,13 @@ function VersionRow({
   current?: boolean;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-lg border border-line px-3 py-2.5">
+    <div className="flex items-center justify-between rounded-ctl border border-line px-3 py-2.5">
       <div>
         <p className="text-sm font-medium text-ink">{version}</p>
         <p className="text-xs text-faint">{note}</p>
       </div>
       {current && (
-        <span className="rounded-md bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">
+        <span className="rounded-ctl bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">
           Current
         </span>
       )}

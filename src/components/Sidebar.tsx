@@ -54,7 +54,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
         )}
         <button
           onClick={onClose ?? (() => setCollapsed((v) => !v))}
-          className={`grid size-8 place-items-center rounded-lg border border-line bg-white text-faint transition-colors hover:bg-surface-soft ${
+          className={`grid size-8 place-items-center rounded-ctl border border-line bg-white text-faint transition-colors hover:bg-surface-soft ${
             showCollapsed ? "mx-auto" : ""
           }`}
           aria-label={isDrawer ? "Close menu" : "Toggle sidebar"}
@@ -78,18 +78,18 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
               Your teams
             </span>
             <button
-              className="grid size-7 place-items-center rounded-lg border border-line bg-white text-faint transition-colors hover:bg-surface-soft"
+              className="grid size-7 place-items-center rounded-ctl border border-line bg-white text-faint transition-colors hover:bg-surface-soft"
               aria-label="Add team"
             >
               <Plus className="size-4" />
             </button>
           </div>
-          <button className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink hover:bg-surface-soft">
+          <button className="flex w-full items-center gap-2 rounded-ctl px-3 py-2 text-sm font-medium text-ink hover:bg-surface-soft">
             <Send className="size-4 -rotate-12 text-accent" />
             <span>ClickTerm Team</span>
             <ChevronDown className="ml-auto size-4 text-faint" />
           </button>
-          <button className="mt-1 flex w-full items-center gap-2 rounded-lg py-2 pl-9 pr-3 text-sm text-muted hover:bg-surface-soft">
+          <button className="mt-1 flex w-full items-center gap-2 rounded-ctl py-2 pl-9 pr-3 text-sm text-muted hover:bg-surface-soft">
             <Briefcase className="size-4" />
             <span>Team Management</span>
           </button>
@@ -112,7 +112,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            className="relative m-3 rounded-xl border border-line bg-white p-4"
+            className="relative m-3 rounded-ctl border border-line bg-white p-4"
           >
             <button
               className="absolute right-3 top-3 text-faint hover:text-muted"
@@ -120,7 +120,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
             >
               <X className="size-4" />
             </button>
-            <span className="grid size-9 place-items-center rounded-lg bg-accent-softer text-accent">
+            <span className="grid size-9 place-items-center rounded-ctl bg-accent-softer text-accent">
               <MessagesSquare className="size-4" />
             </span>
             <p className="mt-3 text-sm font-semibold text-ink">
@@ -152,7 +152,7 @@ function NavItem({
   return (
     <button
       title={collapsed ? label : undefined}
-      className={`relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+      className={`relative flex items-center gap-3 rounded-ctl px-3 py-2 text-sm transition-colors ${
         collapsed ? "justify-center" : ""
       } ${
         active
@@ -168,7 +168,7 @@ function NavItem({
       />
       {!collapsed && <span className="truncate">{label}</span>}
       {!collapsed && badge && (
-        <span className="ml-auto grid h-5 min-w-5 place-items-center rounded-md bg-accent px-1 text-xs font-medium text-white">
+        <span className="ml-auto grid h-5 min-w-5 place-items-center rounded-ctl bg-accent px-1 text-xs font-medium text-white">
           {badge}
         </span>
       )}

@@ -42,7 +42,7 @@ export default function Home() {
           <div className="flex min-w-0 items-center gap-2">
             <button
               onClick={() => setNavOpen(true)}
-              className="grid size-9 shrink-0 place-items-center rounded-lg border border-line text-muted transition-colors hover:bg-surface-soft lg:hidden"
+              className="grid size-9 shrink-0 place-items-center rounded-ctl border border-line-strong text-muted transition-colors hover:bg-surface-soft lg:hidden"
               aria-label="Open menu"
             >
               <Menu className="size-5" />
@@ -59,7 +59,7 @@ export default function Home() {
 
         {/* Toolbar */}
         <div className="flex shrink-0 flex-wrap items-center gap-3 px-4 py-4 sm:px-8 sm:py-5">
-          <div className="flex h-10 min-w-[180px] flex-1 items-center gap-2 rounded-xl border border-line px-3 text-sm text-faint sm:w-72 sm:flex-none">
+          <div className="flex h-10 min-w-[180px] flex-1 items-center gap-2 rounded-ctl border border-line-strong px-3 text-sm text-faint sm:w-72 sm:flex-none">
             <Search className="size-4 shrink-0" />
             <input
               placeholder="Search by tempates"
@@ -71,7 +71,7 @@ export default function Home() {
           <FilterButton label="Status" />
 
           <button
-            className="grid size-10 shrink-0 place-items-center rounded-xl border border-line text-muted transition-colors hover:bg-surface-soft"
+            className="grid size-10 shrink-0 place-items-center rounded-ctl border border-line-strong text-muted transition-colors hover:bg-surface-soft"
             aria-label="Add filter"
           >
             <Plus className="size-4" />
@@ -79,7 +79,7 @@ export default function Home() {
 
           <Link
             href="/templates/new"
-            className="ml-auto flex h-10 shrink-0 items-center gap-2 rounded-xl bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            className="ml-auto flex h-10 shrink-0 items-center gap-2 rounded-ctl bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
           >
             <Plus className="size-4" />
             <span className="hidden sm:inline">New template</span>
@@ -104,7 +104,7 @@ function FilterButton({
   label: string;
 }) {
   return (
-    <button className="flex h-10 shrink-0 items-center gap-2 rounded-xl border border-line px-3 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
+    <button className="flex h-10 shrink-0 items-center gap-2 rounded-ctl border border-line-strong px-3 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
       {icon && <span className="text-muted">{icon}</span>}
       {label}
       <ChevronDown className="size-4 text-faint" />
