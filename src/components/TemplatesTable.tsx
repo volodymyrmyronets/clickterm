@@ -68,7 +68,7 @@ function Cell({
 }) {
   return (
     <div
-      className={`flex h-[52px] min-w-0 items-center overflow-hidden ${edgePad(
+      className={`flex h-[58px] min-w-0 items-center overflow-hidden ${edgePad(
         first,
         last,
       )} ${last ? "" : "border-r border-grid"}`}
