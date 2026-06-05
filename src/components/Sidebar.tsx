@@ -44,7 +44,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
       className="flex h-full shrink-0 flex-col border-r border-line bg-sidebar"
     >
       {/* Brand */}
-      <div className="flex h-16 items-center justify-between px-4">
+      <div className="flex h-16 shrink-0 items-center justify-between px-4">
         {!showCollapsed && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src="/logos/Frame.svg" alt="ClickTerm" className="h-6 w-auto" />
@@ -60,27 +60,26 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
         </button>
       </div>
 
-      {/* Main */}
-      {!showCollapsed && <SectionLabel>Main</SectionLabel>}
-      <nav className="flex flex-col gap-1 px-3 pb-2">
-        {MAIN.map((item) => (
-          <NavItem key={item.label} {...item} collapsed={showCollapsed} />
-        ))}
-      </nav>
+      {/* Scrollable nav */}
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        {!showCollapsed && <SectionLabel>Main</SectionLabel>}
+        <nav className="flex flex-col gap-1 px-3 pb-2">
+          {MAIN.map((item) => (
+            <NavItem key={item.label} {...item} collapsed={showCollapsed} />
+          ))}
+        </nav>
 
-      {/* Workspace */}
-      {!showCollapsed && <SectionLabel>Workspace</SectionLabel>}
-      <nav className="flex flex-col gap-1 px-3 pb-2">
-        {WORKSPACE.map((item) => (
-          <NavItem key={item.label} {...item} collapsed={showCollapsed} />
-        ))}
-      </nav>
-
-      <div className="flex-1" />
+        {!showCollapsed && <SectionLabel>Workspace</SectionLabel>}
+        <nav className="flex flex-col gap-1 px-3 pb-2">
+          {WORKSPACE.map((item) => (
+            <NavItem key={item.label} {...item} collapsed={showCollapsed} />
+          ))}
+        </nav>
+      </div>
 
       {/* Footer */}
       {!showCollapsed && (
-        <div className="flex flex-col gap-2.5 px-3 pb-3">
+        <div className="flex shrink-0 flex-col gap-2.5 border-t border-line px-3 pb-3 pt-3">
           {/* Help */}
           <button className="flex items-center gap-2.5 rounded-ctl px-2.5 py-2 text-sm text-ink-soft transition-colors hover:bg-white">
             <CircleHelp className="size-[18px] text-muted" />

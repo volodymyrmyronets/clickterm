@@ -7,12 +7,11 @@ import {
   ChevronDown,
   CirclePlus,
   FileUp,
-  Info,
   ListFilter,
   Menu,
   Plus,
   Search,
-  User,
+  Trash2,
 } from "lucide-react";
 import { Sidebar } from "@/components/Sidebar";
 import { TemplatesTable } from "@/components/TemplatesTable";
@@ -61,11 +60,34 @@ export default function Home() {
             <h1 className="truncate text-xl font-bold tracking-tight sm:text-2xl">
               Clickwrap Templates
             </h1>
-            <Info className="hidden size-4 shrink-0 text-faint sm:block" />
           </div>
-          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">
-            <User className="size-4" />
-          </span>
+
+          {/* New template + hover dropdown */}
+          <div className="group relative shrink-0">
+            <Link
+              href="/templates/new"
+              className="flex h-10 items-center gap-2 rounded-ctl bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            >
+              <Plus className="size-4" />
+              <span className="hidden sm:inline">New template</span>
+              <span className="sm:hidden">New</span>
+            </Link>
+            <div className="invisible absolute right-0 top-full z-30 w-56 translate-y-1 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="flex flex-col gap-0.5 rounded-ctl border border-line bg-white p-1.5 shadow-[0_1px_2px_rgba(16,18,27,.06),0_10px_28px_rgba(16,18,27,.12)]">
+                <Link
+                  href="/templates/new"
+                  className="flex h-9 items-center gap-2.5 rounded-ctl bg-accent-soft px-2.5 text-sm font-medium text-accent"
+                >
+                  <Plus className="size-4" />
+                  New template
+                </Link>
+                <button className="flex h-9 items-center gap-2.5 rounded-ctl px-2.5 text-sm font-medium text-ink transition-colors hover:bg-surface">
+                  <FileUp className="size-4 text-faint" />
+                  Import template
+                </button>
+              </div>
+            </div>
+          </div>
         </header>
 
         {/* Toolbar */}
@@ -86,33 +108,10 @@ export default function Home() {
             Add filter
           </button>
 
-          <div className="group relative ml-auto shrink-0">
-            <Link
-              href="/templates/new"
-              className="flex h-10 items-center gap-2 rounded-ctl bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
-            >
-              <Plus className="size-4" />
-              <span className="hidden sm:inline">New template</span>
-              <span className="sm:hidden">New</span>
-            </Link>
-
-            {/* Hover dropdown */}
-            <div className="invisible absolute right-0 top-full z-30 w-56 translate-y-1 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <div className="flex flex-col gap-0.5 rounded-ctl border border-line bg-white p-1.5 shadow-[0_1px_2px_rgba(16,18,27,.06),0_10px_28px_rgba(16,18,27,.12)]">
-                <Link
-                  href="/templates/new"
-                  className="flex h-9 items-center gap-2.5 rounded-ctl bg-accent-soft px-2.5 text-sm font-medium text-accent"
-                >
-                  <Plus className="size-4" />
-                  New template
-                </Link>
-                <button className="flex h-9 items-center gap-2.5 rounded-ctl px-2.5 text-sm font-medium text-ink transition-colors hover:bg-surface">
-                  <FileUp className="size-4 text-faint" />
-                  Import template
-                </button>
-              </div>
-            </div>
-          </div>
+          <button className="ml-auto flex h-10 shrink-0 items-center gap-2 rounded-ctl px-2.5 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
+            <Trash2 className="size-[18px] text-muted" />
+            Clear all
+          </button>
         </div>
 
         {/* Table (scrolls horizontally on small screens) */}
