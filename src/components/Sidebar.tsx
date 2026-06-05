@@ -1,35 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Briefcase,
-  ChevronDown,
   CircleCheck,
+  CircleHelp,
   CodeXml,
   Files,
   FilePlus2,
-  MessagesSquare,
   PanelLeft,
   PieChart,
-  Plus,
   Receipt,
-  ScrollText,
-  Send,
+  User,
   Users,
   X,
 } from "lucide-react";
 
-const NAV = [
+const MAIN = [
   { icon: FilePlus2, label: "Clickwrap Templates", active: true },
   { icon: Files, label: "Clickwrap Bundles" },
   { icon: CircleCheck, label: "Clickwrap Events" },
   { icon: Users, label: "End Users" },
   { icon: CodeXml, label: "Integrations" },
-  { icon: ScrollText, label: "Audit Log" },
 ] as const;
 
-const FOOTER_NAV = [
+const WORKSPACE = [
+  { icon: Briefcase, label: "Team Management" },
   { icon: Receipt, label: "Billing" },
   { icon: PieChart, label: "Plan & Usage" },
 ] as const;
@@ -37,7 +34,6 @@ const FOOTER_NAV = [
 /** `onClose` is passed when rendered inside the mobile drawer. */
 export function Sidebar({ onClose }: { onClose?: () => void }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [inviteDismissed, setInviteDismissed] = useState(false);
   const isDrawer = !!onClose;
   const showCollapsed = !isDrawer && collapsed;
 
@@ -64,77 +60,77 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
         </button>
       </div>
 
-      {/* Primary nav */}
-      <nav className="flex flex-col gap-1 px-3 py-2">
-        {NAV.map((item) => (
+      {/* Main */}
+      {!showCollapsed && <SectionLabel>Main</SectionLabel>}
+      <nav className="flex flex-col gap-1 px-3 pb-2">
+        {MAIN.map((item) => (
           <NavItem key={item.label} {...item} collapsed={showCollapsed} />
         ))}
       </nav>
 
-      {/* Teams */}
-      {!showCollapsed && (
-        <div className="mt-4 px-3">
-          <div className="flex items-center justify-between px-3 py-1.5">
-            <span className="text-[11px] font-medium uppercase tracking-wide text-faint">
-              Your teams
-            </span>
-            <button
-              className="grid size-7 place-items-center rounded-ctl border border-line bg-white text-faint transition-colors hover:bg-surface-soft"
-              aria-label="Add team"
-            >
-              <Plus className="size-4" />
-            </button>
-          </div>
-          <button className="flex w-full items-center gap-2 rounded-ctl px-3 py-2 text-sm font-medium text-ink hover:bg-surface-soft">
-            <Send className="size-4 -rotate-12 text-accent" />
-            <span>ClickTerm Team</span>
-            <ChevronDown className="ml-auto size-4 text-faint" />
-          </button>
-          <button className="mt-1 flex w-full items-center gap-2 rounded-ctl py-2 pl-9 pr-3 text-sm text-muted hover:bg-surface-soft">
-            <Briefcase className="size-4" />
-            <span>Team Management</span>
-          </button>
-        </div>
-      )}
+      {/* Workspace */}
+      {!showCollapsed && <SectionLabel>Workspace</SectionLabel>}
+      <nav className="flex flex-col gap-1 px-3 pb-2">
+        {WORKSPACE.map((item) => (
+          <NavItem key={item.label} {...item} collapsed={showCollapsed} />
+        ))}
+      </nav>
 
       <div className="flex-1" />
 
-      {/* Footer nav */}
-      <nav className="flex flex-col gap-1 px-3 py-2">
-        {FOOTER_NAV.map((item) => (
-          <NavItem key={item.label} {...item} collapsed={showCollapsed} />
-        ))}
-      </nav>
-
-      {/* Invite card */}
-      <AnimatePresence>
-        {!showCollapsed && !inviteDismissed && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            className="relative m-3 rounded-ctl border border-line bg-white p-4"
-          >
-            <button
-              onClick={() => setInviteDismissed(true)}
-              className="absolute right-3 top-3 text-faint hover:text-muted"
-              aria-label="Dismiss"
-            >
-              <X className="size-4" />
-            </button>
-            <span className="grid size-9 place-items-center rounded-ctl bg-accent-softer text-accent">
-              <MessagesSquare className="size-4" />
+      {/* Footer */}
+      {!showCollapsed && (
+        <div className="flex flex-col gap-2.5 px-3 pb-3">
+          {/* Help */}
+          <button className="flex items-center gap-2.5 rounded-ctl px-2.5 py-2 text-sm text-ink-soft transition-colors hover:bg-white">
+            <CircleHelp className="size-[18px] text-muted" />
+            <span>Help and first steps</span>
+            <span className="ml-auto rounded-ctl border border-line bg-white px-1.5 py-0.5 text-[11px] font-medium tabular-nums text-muted">
+              1/6
             </span>
-            <p className="mt-3 text-sm font-semibold text-ink">
-              Invite team members
-            </p>
-            <p className="mt-1 text-xs leading-relaxed text-muted">
-              Bring your team in to share and collaborate!
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </button>
+
+          {/* Plan card */}
+          <div className="rounded-ctl border border-accent-softer bg-accent-soft p-3">
+            <span className="inline-flex items-center gap-1.5 rounded-ctl border border-accent-softer bg-white px-2 py-0.5 text-xs font-medium text-accent">
+              <span className="size-1.5 rounded-full bg-accent" />
+              Active now
+            </span>
+            <div className="mt-2.5 flex items-center justify-between gap-2">
+              <span className="text-sm font-semibold text-ink">
+                Free Plan — Tier 1
+              </span>
+              <button className="shrink-0 rounded-ctl bg-accent px-2.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-accent-hover">
+                Upgrade
+              </button>
+            </div>
+          </div>
+
+          {/* User */}
+          <button className="flex items-center gap-2.5 rounded-ctl border border-line bg-white p-2.5 text-left shadow-sm transition-colors hover:bg-surface">
+            <span className="grid size-8 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">
+              <User className="size-4" />
+            </span>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold text-ink">
+                Oleg Makarov
+              </p>
+              <p className="truncate text-xs text-muted">
+                oleg.makarov@clickterm.com
+              </p>
+            </div>
+          </button>
+        </div>
+      )}
     </motion.aside>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="px-5 pb-1.5 pt-3 text-[11px] font-medium uppercase tracking-wide text-faint">
+      {children}
+    </div>
   );
 }
 

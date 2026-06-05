@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   Calendar,
   ChevronDown,
+  CirclePlus,
   FileUp,
   Info,
   ListFilter,
@@ -72,19 +73,17 @@ export default function Home() {
           <div className="flex h-10 min-w-[180px] flex-1 items-center gap-2 rounded-ctl border border-line-strong px-3 text-sm text-faint sm:w-72 sm:flex-none">
             <Search className="size-4 shrink-0" />
             <input
-              placeholder="Search by tempates"
+              placeholder="Search by templates"
               className="w-full bg-transparent text-ink outline-none placeholder:text-faint"
             />
           </div>
 
-          <FilterButton icon={<Calendar className="size-4" />} label="Created date" />
           <FilterButton icon={<ListFilter className="size-4" />} label="Status" />
+          <FilterButton icon={<Calendar className="size-4" />} label="Created date" />
 
-          <button
-            className="grid size-10 shrink-0 place-items-center rounded-ctl border border-line-strong text-muted transition-colors hover:bg-surface-soft"
-            aria-label="Add filter"
-          >
-            <Plus className="size-4" />
+          <button className="flex h-10 shrink-0 items-center gap-2 rounded-ctl px-2.5 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-soft">
+            <CirclePlus className="size-[18px] text-muted" />
+            Add filter
           </button>
 
           <div className="group relative ml-auto shrink-0">
