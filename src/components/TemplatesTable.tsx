@@ -6,13 +6,13 @@ import { Check, Copy, MoreVertical, Plus } from "lucide-react";
 import { TEMPLATES, tagColor, type TemplateRow } from "@/lib/data";
 
 const GRID =
-  "grid grid-cols-[110px_minmax(220px,1.4fr)_90px_minmax(280px,1.2fr)_110px_140px_205px]";
+  "grid grid-cols-[150px_minmax(220px,1.4fr)_90px_minmax(280px,1.2fr)_110px_140px_205px]";
 
 export function TemplatesTable() {
   return (
     <div className="min-w-[1024px]">
       {/* Header */}
-      <div className={`${GRID} border-y border-line-strong bg-white`}>
+      <div className={`${GRID} sticky top-0 z-10 border-y border-line-strong bg-white`}>
         <HeadCell first>Created date</HeadCell>
         <HeadCell>Template name</HeadCell>
         <HeadCell>Version</HeadCell>
@@ -47,7 +47,7 @@ function HeadCell({
 }) {
   return (
     <div
-      className={`flex h-11 min-w-0 items-center text-[13px] font-medium text-ink-soft ${edgePad(
+      className={`flex h-11 min-w-0 items-center whitespace-nowrap text-[13px] font-medium text-ink-soft ${edgePad(
         first,
         last,
       )} ${last ? "" : "border-r border-grid"}`}
