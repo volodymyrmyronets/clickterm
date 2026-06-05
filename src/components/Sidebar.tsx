@@ -23,7 +23,7 @@ import {
 const NAV = [
   { icon: FilePlus2, label: "Clickwrap Templates", active: true },
   { icon: Files, label: "Clickwrap Bundles" },
-  { icon: CircleCheck, label: "Clickwrap Events", badge: "1" },
+  { icon: CircleCheck, label: "Clickwrap Events" },
   { icon: Users, label: "End Users" },
   { icon: CodeXml, label: "Integrations" },
   { icon: ScrollText, label: "Audit Log" },
