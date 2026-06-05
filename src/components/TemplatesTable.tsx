@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 
 const useIsoLayoutEffect =
@@ -227,15 +228,53 @@ function TagCell({ tags }: { tags: string[] }) {
           </span>
         );
       })}
-      {hidden.length > 0 && (
-        <span
-          title={hidden.join(", ")}
-          className="inline-flex h-[21px] shrink-0 cursor-default items-center rounded-[2px] bg-[#f0f0f2] px-[7px] text-xs font-medium text-ink-soft"
-        >
-          +{hidden.length}
-        </span>
-      )}
+      {hidden.length > 0 && <MoreChip hidden={hidden} />}
     </div>
+  );
+}
+
+function MoreChip({ hidden }: { hidden: string[] }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
+
+  function show() {
+    const r = ref.current?.getBoundingClientRect();
+    if (!r) return;
+    setPos({ top: r.bottom + 6, left: Math.min(r.left, window.innerWidth - 300) });
+    setOpen(true);
+  }
+
+  return (
+    <span
+      ref={ref}
+      onMouseEnter={show}
+      onMouseLeave={() => setOpen(false)}
+      className="inline-flex h-[21px] shrink-0 cursor-default items-center rounded-[2px] bg-[#f0f0f2] px-[7px] text-xs font-medium text-ink-soft transition-colors hover:bg-line-strong"
+    >
+      +{hidden.length}
+      {open &&
+        createPortal(
+          <div
+            style={{ position: "fixed", top: pos.top, left: pos.left, zIndex: 100 }}
+            className="flex max-w-[280px] flex-wrap gap-1.5 rounded-ctl border border-line bg-white p-2 shadow-[0_1px_2px_rgba(16,18,27,.06),0_10px_28px_rgba(16,18,27,.12)]"
+          >
+            {hidden.map((t) => {
+              const c = tagColor(t);
+              return (
+                <span
+                  key={t}
+                  className="inline-flex h-[21px] items-center rounded-[2px] px-[7px] text-xs font-medium"
+                  style={{ backgroundColor: c.bg, color: c.text }}
+                >
+                  {t}
+                </span>
+              );
+            })}
+          </div>,
+          document.body,
+        )}
+    </span>
   );
 }
 
