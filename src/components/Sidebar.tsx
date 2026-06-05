@@ -63,14 +63,14 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
       {/* Scrollable nav */}
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
         {!showCollapsed && <SectionLabel>Main</SectionLabel>}
-        <nav className="flex flex-col gap-1 px-3 pb-2">
+        <nav className="flex flex-col gap-1.5 px-3 pb-2">
           {MAIN.map((item) => (
             <NavItem key={item.label} {...item} collapsed={showCollapsed} />
           ))}
         </nav>
 
         {!showCollapsed && <SectionLabel>Workspace</SectionLabel>}
-        <nav className="flex flex-col gap-1 px-3 pb-2">
+        <nav className="flex flex-col gap-1.5 px-3 pb-2">
           {WORKSPACE.map((item) => (
             <NavItem key={item.label} {...item} collapsed={showCollapsed} />
           ))}
